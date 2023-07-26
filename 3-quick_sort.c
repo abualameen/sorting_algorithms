@@ -1,7 +1,7 @@
 #include "sort.h"
 int lomuto_partition(int *array, size_t size, int low, int high);
 void quick_sort_recursive(int *array, size_t size, int low, int high);
-int check_all_ele_identical( int *array, size_t size);
+int check_all_ele_identical(int *array, size_t size);
 /**
  * quick_sort - the quick sort function def
  * @array: the array to be sorted
@@ -85,23 +85,22 @@ int lomuto_partition(int *array, size_t size, int low, int high)
 
 
 /**
- * check_all_ele_identical - func checks for identical ele 
+ * check_all_ele_identical - func checks for identical ele
  * @array: array to check
  * @size: size of the array
  * Return: 0
  */
 
-int check_all_ele_identical( int *array, size_t size)
+int check_all_ele_identical(int *array, size_t size)
 {
 	size_t i;
-	
+
 	for (i = 1; i < size; i++)
 	{
 		if (array[i] != array[0])
 		{
-			return 0;
+			return (0);
 		}
 	}
-	return 1;
-	
+	return (1);
 }
