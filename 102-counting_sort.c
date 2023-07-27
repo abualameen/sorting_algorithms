@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 int benn(void);
 /**
  * counting_sort - the main function
@@ -17,8 +18,21 @@ void counting_sort(int *array, size_t size)
 	int *counting_array;
 	int *sorted_array;
 	ssize_t y;
+	bool is_sorted = true;
 
 	if (!array || size < 2)
+	{
+		return;
+	}
+	for (i = 0; i < size; i++)
+	{
+		if (array[i] < array[i - 1])
+		{
+			is_sorted = false;
+			break;
+		}
+	}
+	if (is_sorted)
 	{
 		return;
 	}
@@ -36,6 +50,11 @@ void counting_sort(int *array, size_t size)
 			min_val = array[i];
 		}
 	}
+	if (max_val == min_val)
+	{
+		return;
+	}
+	
 	counting_size = max_val - min_val + 1;
 	counting_array = malloc(counting_size * sizeof(int));
 	if (!counting_array)
